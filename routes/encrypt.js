@@ -1,58 +1,27 @@
-/** 
-    const {publicKey, privateKey} = crypto.generateKeyPairSync(alg_type, options);
-    
-    out_pvk = privateKey.export({
-        type: exp_type,
-        format: "pem"
-    });
+const express = require('express');
+const router = express.Router();
+const { rsa_encrypt, ecc_encrypt } = require('../controllers/encrypt');
 
-    out_pbk = publicKey.export({
-        type: "spki",
-        format: "pem"
-    });
+router.post('/', (req, res) => {
+    alg_type = req.body.type;
+    data = req.body.data;
 
-    in_pvk = crypto.createPrivateKey({
-        key: out_pvk
-    });
+    if(alg_type == 'rsa'){
+        pbk = req.body.rsa_pbk;
+        ciphertext = rsa_encrypt(data, pbk);
 
-    in_pbk = crypto.createPublicKey({
-        key: out_pbk
-    });
-    **/
+        res.json({
+            cipher: ciphertext
+        });
+    }
+    else if(alg_type == 'ecc'){
+        ssk = req.body.ecc_ssk;
+        ciphertext = ecc_encrypt(data, ssk);
 
-    /**
-    const ecdh_a = createECDH('secp256k1');
-    ecdh_a.generateKeys();
-    const ecdh_pbk = ecdh.getPublicKey('hex', 'compressed');
+        res.json({
+            cipher: ciphertext
+        });
+    }
+});
 
-    const data = "my secret data";
-
-    const encrypt_msg = eccrypto.encrypt(ecdh_pbk, Buffer.from(data));
-    console.log(encrypt_msg);
-    **/
-    const ecdh_a = createECDH('secp256k1');
-    ecdh_a.generateKeys();
-
-    const ecdh_b = createECDH('secp256k1');
-    ecdh_b.generateKeys();
-
-    const ecdh_pbk = ecdh_a.getPublicKey('hex', 'compressed');
-    console.log(ecdh_pbk);
-
-    a_secret = ecdh_a.computeSecret(ecdh_b.getPublicKey(), null, 'hex');
-
-    console.log(a_secret);
-
-    const data = "my secret data";
-    var iv = crypto.randomBytes(16);
-    const secret = 'shezhuansauce';
-    const key = crypto.createHash('sha256').update(String(secret)).digest('base64').substr(0, 32);
-    cipher = crypto.createCipheriv('aes256', key, iv,);
-    var encrypted = cipher.update(data, 'utf8', 'hex');
-    encrypted += cipher.final('hex');
-    console.log(encrypted);
-
-    var decipher = crypto.createDecipheriv('aes256', key, iv);
-    var decrypted = decipher.update(encrypted, 'hex', 'utf8');
-    decrypted += decipher.final('utf8');
-    console.log(decrypted);
+module.exports = router;
