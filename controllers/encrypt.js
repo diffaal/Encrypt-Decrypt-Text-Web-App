@@ -7,7 +7,7 @@ function rsa_encrypt(data, pbk){
 
     const encryptedData = crypto.publicEncrypt(
         {
-          key: in_pbk,
+            key: in_pbk,
         },
         Buffer.from(data)
     );
