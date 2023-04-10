@@ -15,6 +15,8 @@ app.use('/', require('./routes/home'));
 app.use('/generate-key', require('./routes/gen_key'));
 app.use('/encrypt', require('./routes/encrypt'));
 app.use('/decrypt', require('./routes/decrypt'));
+app.use('/sign', require('./routes/sign'));
+app.use('/verify', require('./routes/verify'));
 
 app.listen(61666, () => {
     console.log('Program berjalan pada port 61666');

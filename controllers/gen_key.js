@@ -64,9 +64,12 @@ function ecc_gen_key(curve) {
 
 function ecc_gen_shared_secret_key(pvk_sender, pbk_reciever, curve) {
     const ecdh = crypto.createECDH(curve);
-    ecdh.setPrivateKey(pvk_sender, 'base64');
+    sender_parsed = ecKeyUtils.parsePem(pvk_sender);
+    reciever_parsed = ecKeyUtils.parsePem(pbk_reciever);
 
-    ssk = ecdh.computeSecret(pbk_reciever, 'base64', 'base64');
+    ecdh.setPrivateKey(sender_parsed.privateKey, 'base64');
+
+    ssk = ecdh.computeSecret(reciever_parsed.publicKey, 'base64', 'base64');
 
     return ssk;
 }

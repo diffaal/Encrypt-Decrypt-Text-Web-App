@@ -12,14 +12,14 @@ function rsa_encrypt(data, pbk){
         Buffer.from(data)
     );
 
-    return encryptedData;
+    return encryptedData.toString("base64");
 }
 
 function ecc_encrypt(data, ssk){
-    iv = crypto.randomBytes(16);
+    iv = "albw+ooK8vJR8RviGSThXg==";
     console.log(ssk.length);
     const key = ssk.substr(0, 32);
-    cipher = crypto.createCipheriv('aes256', key, iv);
+    cipher = crypto.createCipheriv('aes256', key, Buffer.from(iv, "base64"));
     encryptedData = cipher.update(data, 'utf8', 'hex');
     encryptedData += cipher.final('hex');
     console.log(encryptedData);
