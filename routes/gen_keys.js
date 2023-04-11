@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { rsa_gen_key, ecc_gen_key, ecc_gen_shared_secret_key } = require('../controllers/gen_key');
+const { rsa_gen_key, ecc_gen_key, ecc_gen_shared_secret_key } = require('../controllers/gen_keys');
 
 router.get('/', (req, res) => {
     alg_type = req.body.type;
