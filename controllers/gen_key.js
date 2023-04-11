@@ -36,36 +36,18 @@ function ecc_gen_key(curve) {
     pvk = pems.privateKey;
 
     parsed = ecKeyUtils.parsePem(pbk);
-    console.log(Buffer.from(parsed.publicKey).toString('hex'));
-
-    /*
-    const { publicKey, privateKey } = crypto.generateKeyPairSync('ec', {
-        namedCurve: curve,
-        publicKeyEncoding: {
-            type: 'spki',
-            format: 'pem',
-        },
-        privateKeyEncoding: {
-            type: 'sec1',
-            format: 'pem'
-        }
-    });
-
-    pbk = publicKey;
-    pvk = privateKey;
-
-    console.log(pbk);
-    */
-
-    console.log(pbk);
+    console.log(parsed);
 
     return { pbk, pvk };
 }
 
-function ecc_gen_shared_secret_key(pvk_sender, pbk_reciever, curve) {
-    const ecdh = crypto.createECDH(curve);
+function ecc_gen_shared_secret_key(pvk_sender, pbk_reciever) {
     sender_parsed = ecKeyUtils.parsePem(pvk_sender);
     reciever_parsed = ecKeyUtils.parsePem(pbk_reciever);
+    
+    curve = sender_parsed.curveName;
+
+    const ecdh = crypto.createECDH(curve);
 
     ecdh.setPrivateKey(sender_parsed.privateKey, 'base64');
 

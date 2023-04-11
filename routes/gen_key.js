@@ -30,9 +30,8 @@ router.get('/', (req, res) => {
 router.get('/shared-secret-key', (req, res) => {
     pvk_sender = req.body.pvk_sender;
     pbk_reciever = req.body.pbk_reciever;
-    namedCurve = req.body.curve;
 
-    ssk = ecc_gen_shared_secret_key(pvk_sender, pbk_reciever, namedCurve);
+    ssk = ecc_gen_shared_secret_key(pvk_sender, pbk_reciever);
 
     res.json({
         shared_secret_key: ssk

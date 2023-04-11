@@ -11,7 +11,7 @@ app.use(fileUpload());
 app.use(cors({origin: '*'}));
 app.set('view engine', 'html');
 
-app.use('/', require('./routes/home'));
+app.use('/', require('./routes/pages'));
 app.use('/generate-key', require('./routes/gen_key'));
 app.use('/encrypt', require('./routes/encrypt'));
 app.use('/decrypt', require('./routes/decrypt'));

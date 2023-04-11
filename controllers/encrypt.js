@@ -1,4 +1,5 @@
 const crypto = require('crypto');
+const sym_key_alg = require('../helpers/sym_key_alg');
 
 function rsa_encrypt(data, pbk){
     in_pbk = crypto.createPublicKey({
@@ -18,8 +19,8 @@ function rsa_encrypt(data, pbk){
 function ecc_encrypt(data, ssk){
     iv = "albw+ooK8vJR8RviGSThXg==";
     console.log(ssk.length);
-    const key = ssk.substr(0, 32);
-    cipher = crypto.createCipheriv('aes256', key, Buffer.from(iv, "base64"));
+    const { key, alg } = sym_key_alg(ssk);
+    cipher = crypto.createCipheriv(alg, key, Buffer.from(iv, "base64"));
     encryptedData = cipher.update(data, 'utf8', 'hex');
     encryptedData += cipher.final('hex');
     console.log(encryptedData);
