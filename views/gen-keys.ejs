@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Encrypt-Decrypt Text</title>
+        <link rel="stylesheet" href="../assets/style.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li class="brand">Encrypt-Decrypt Text</li>
+                    <li class="nav-right"><a href="/sign-ver">SIGN/VERIFY</a></li>
+                    <li class="nav-right"><a href="/enc-dec">ENCRYPT/DECRYPT</a></li>
+                    <li class="nav-right"><a href="/gen-keys">GEN-KEYS</a></li>
+                    <li class="nav-right"><a href="/">HOME</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <article id="smartphones">
+                <h2>GENERATE KEYS</h2>
+                <div class="flex-container">
+                    <div class="flex-box">
+                        <h3>RSA</h3>
+                        <form id="rsa-gen-key-form" action="http://localhost:61666/generate-keys" method="post">
+                            <label for="id">Key Length</label>
+                            <select name="mod" id="key-length-rsa">
+                                <option value="1024">1024</option>
+                                <option value="2048">2048</option>
+                                <option value="3072">3072</option>
+                                <option value="7680">7680</option>
+                            </select>
+                            <input type="hidden" id="type" name="alg_type" value="rsa">
+                            <input type="submit" id="submit" class="clearfix btn" value="Generate">
+                        </form>
+                        <br>
+                        <form id="pbk-download-form" action="http://localhost:61666/downloads" method="post">
+                            <p>Public Key</p>
+                            <textarea readonly name="message" rows="10" cols="30"><%= rsa_public_key %></textarea>
+                            <input type="hidden" id="type" name="file_type" value="rsa_public_key">
+                            <input type="submit" id="submit" class="clearfix btn" value="Download">
+                        </form>
+                        <form id="pbk-download-form" action="http://localhost:61666/downloads" method="post">
+                            <p>Private Key</p>
+                            <textarea readonly name="message" rows="10" cols="30"><%= rsa_private_key %></textarea>
+                            <input type="hidden" id="type" name="file_type" value="rsa_private_key">
+                            <input type="submit" id="submit" class="clearfix btn" value="Download">
+                        </form>
+                    </div>
+                    <div class="flex-box">
+                        <h3>ECC</h3>
+                        <form id="ecc-gen-key-form" action="http://localhost:61666/generate-keys" method="post">
+                            <label for="id">Key Length</label>
+                            <select name="curve" id="key-length-ecc">
+                                <option value="secp160k1">160</option>
+                                <option value="secp224k1">224</option>
+                                <option value="secp256k1">256</option>
+                                <option value="secp384r1">384</option>
+                            </select>
+                            <input type="hidden" id="type" name="alg_type" value="ecc">
+                            <input type="submit" id="submit" class="clearfix btn" value="Generate">
+                        </form>
+                        <br>
+                        <form id="pbk-download-form" action="http://localhost:61666/downloads" method="post">
+                            <p>Public Key</p>
+                            <textarea readonly name="message" rows="10" cols="30"><%= ecc_public_key %></textarea>
+                            <input type="hidden" id="type" name="file_type" value="ecc_public_key">
+                            <input type="submit" id="submit" class="clearfix btn" value="Download">
+                        </form>
+                        <form id="pbk-download-form" action="http://localhost:61666/downloads" method="post">
+                            <p>Private Key</p>
+                            <textarea readonly name="message" rows="10" cols="30"><%= ecc_private_key %></textarea>
+                            <input type="hidden" id="type" name="file_type" value="ecc_private_key">
+                            <input type="submit" id="submit" class="clearfix btn" value="Download">
+                        </form>
+                    </div>
+                    <div class="flex-box">
+                        <h3>Shared Secret Key</h3>
+                        <form id="ssk-gen-key-form" action="http://localhost:61666/generate-keys/shared-secret-key" method="post" enctype="multipart/form-data">
+                            <label for="id">Public Key Reciever</label>
+                            <input type="file" id="key" name="pbk_reciever">
+                            <br>
+                            <label for="id">Private Key Sender</label>
+                            <input type="file" id="key" name="pvk_sender">
+                            <input type="submit" id="submit" class="clearfix btn" value="Generate">
+                        </form>
+                        <br>
+                        <form id="ssk-download-form" action="http://localhost:61666/downloads" method="post">
+                            <p>Key</p>
+                            <textarea readonly name="message" rows="10" cols="30"><%= ssk %></textarea>
+                            <input type="hidden" id="type" name="file_type" value="shared-secret-key">
+                            <input type="submit" id="submit" class="clearfix btn" value="Download">
+                        </form>
+                    </div>
+                </div>
+            </article>
+        </main>
+        <footer>
+            <p>&copy; 2023 Muhammad Diffa Ananda Lukman</p>
+        </footer>
+    </body>
+</html>

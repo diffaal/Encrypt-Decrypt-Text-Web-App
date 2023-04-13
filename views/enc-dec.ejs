@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Encrypt-Decrypt Text</title>
+        <link rel="stylesheet" href="../assets/style.css">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li class="brand">Encrypt-Decrypt Text</li>
+                    <li class="nav-right"><a href="/sign-ver">SIGN/VERIFY</a></li>
+                    <li class="nav-right"><a href="/enc-dec">ENCRYPT/DECRYPT</a></li>
+                    <li class="nav-right"><a href="/gen-keys">GEN-KEYS</a></li>
+                    <li class="nav-right"><a href="/">HOME</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <article id="smartphones">
+                <div class="flex-container fc-enc-dec">
+                    <div class="flex-box">
+                        <h2>ENCRYPT</h2>
+                        <form id="enc-form" action="http://localhost:61666/encrypt" method="post">
+                            <label for="id">Algorithm</label>
+                            <select name="type" id="alg">
+                                <option value="rsa">RSA</option>
+                                <option value="ecc">ECC</option>
+                            </select>
+                            <br>
+                            <label for="id">Public Key</label>
+                            <input type="file" id="key" name="pbk">
+                            <p>Input<p>
+                            <textarea readonly name="message" rows="10" cols="30"></textarea>
+                            <input type="submit" id="submit" class="clearfix btn" value="Encrypt">
+                        </form>
+                        <br>
+                        <p>Output</p>
+                        <textarea readonly name="message" rows="10" cols="30"></textarea>   
+                    </div>
+                    <div class="flex-box">
+                        <h2>DECRYPT</h2>
+                        <form id="dec-form" action="http://localhost:61666/decrypt" method="post">
+                            <label for="id">Algorithm</label>
+                            <select name="type" id="alg">
+                                <option value="rsa">RSA</option>
+                                <option value="ecc">ECC</option>
+                            </select>
+                            <br>
+                            <label for="id">Private Key</label>
+                            <input type="file" id="key" name="pvk">
+                            <p>Input<p>
+                            <textarea readonly name="message" rows="10" cols="30"></textarea>
+                            <input type="submit" id="submit" class="clearfix btn" value="Decrypt">
+                        </form>
+                        <br>
+                        <p>Output</p>
+                        <textarea readonly name="message" rows="10" cols="30"></textarea>   
+                    </div>
+                </div>
+            </article>
+        </main>
+        <footer>
+            <p>&copy; 2023 Muhammad Diffa Ananda Lukman</p>
+        </footer>
+    </body>
+</html>
