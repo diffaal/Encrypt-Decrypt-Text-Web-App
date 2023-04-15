@@ -1,27 +1,29 @@
 const express = require('express');
 const router = express.Router();
 const { rsa_decrypt, ecc_decrypt } = require('../controllers/decrypt');
+const { write_file } = require('../helpers/file');
 
 router.post('/', (req, res) => {
     alg_type = req.body.type;
     data = req.body.data;
+    render = {
+        cipher: null,
+        plain: null
+    }
 
     if(alg_type == 'rsa'){
-        pvk = req.body.rsa_pvk;
+        pvk = req.files.rsa_pvk.data.toString();
         plaintext = rsa_decrypt(data, pvk);
-
-        res.json({
-            text: plaintext
-        });
+        plaintext_file_name = write_file("plaintext", plaintext);
+        render.plain = plaintext;
     }
     else if(alg_type == 'ecc'){
-        ssk = req.body.ecc_ssk;
+        ssk = req.files.ecc_ssk.data.toString();
         plaintext = ecc_decrypt(data, ssk);
-
-        res.json({
-            text: plaintext
-        });
+        plaintext_file_name = write_file("plaintext", plaintext);
+        render.plain = plaintext;
     }
+    res.render('../views/enc-dec', render);
 });
 
 module.exports = router;

@@ -16,7 +16,10 @@ router.get('/gen-keys', function(req, res){
 });
 
 router.get('/enc-dec', function(req, res){
-    res.render('../views/enc-dec');
+    res.render('../views/enc-dec', {
+        cipher: null,
+        plain: null
+    });
 });
 
 router.get('/sign-ver', function(req, res){

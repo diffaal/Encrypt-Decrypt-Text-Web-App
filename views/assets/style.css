@@ -81,13 +81,13 @@ h2, h4{
 .flex-container{
     display: flex;
     width: 1200px;
-    height: 600px;
+    height: 657px;
     padding: 20px;
     margin: auto;
 }
 
 .fc-enc-dec{
-    height: 650px;
+    height: 726px;
 }
 
 .fc-sign-ver{
