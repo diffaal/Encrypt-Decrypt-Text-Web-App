@@ -23,7 +23,7 @@
                     <div class="flex-box">
                         <h3>RSA</h3>
                         <form id="rsa-gen-key-form" action="http://localhost:61666/generate-keys" method="post">
-                            <label for="id">Key Length</label>
+                            <label for="id">Key Length:</label>
                             <select name="mod" id="key-length-rsa">
                                 <option value="1024">1024</option>
                                 <option value="2048">2048</option>
@@ -35,13 +35,13 @@
                         </form>
                         <br>
                         <form id="pbk-download-form" action="http://localhost:61666/downloads" method="post">
-                            <p>Public Key</p>
+                            <p>Public Key:</p>
                             <textarea readonly name="message" rows="10" cols="30"><%= rsa_public_key %></textarea>
                             <input type="hidden" id="type" name="file_type" value="rsa_public_key">
                             <input type="submit" id="submit" class="clearfix btn" value="Download">
                         </form>
                         <form id="pbk-download-form" action="http://localhost:61666/downloads" method="post">
-                            <p>Private Key</p>
+                            <p>Private Key:</p>
                             <textarea readonly name="message" rows="10" cols="30"><%= rsa_private_key %></textarea>
                             <input type="hidden" id="type" name="file_type" value="rsa_private_key">
                             <input type="submit" id="submit" class="clearfix btn" value="Download">
@@ -50,7 +50,7 @@
                     <div class="flex-box">
                         <h3>ECC</h3>
                         <form id="ecc-gen-key-form" action="http://localhost:61666/generate-keys" method="post">
-                            <label for="id">Key Length</label>
+                            <label for="id">Key Length:</label>
                             <select name="curve" id="key-length-ecc">
                                 <option value="secp160k1">160</option>
                                 <option value="secp224k1">224</option>
@@ -62,31 +62,32 @@
                         </form>
                         <br>
                         <form id="pbk-download-form" action="http://localhost:61666/downloads" method="post">
-                            <p>Public Key</p>
+                            <p>Public Key:</p>
                             <textarea readonly name="message" rows="10" cols="30"><%= ecc_public_key %></textarea>
                             <input type="hidden" id="type" name="file_type" value="ecc_public_key">
                             <input type="submit" id="submit" class="clearfix btn" value="Download">
                         </form>
                         <form id="pbk-download-form" action="http://localhost:61666/downloads" method="post">
-                            <p>Private Key</p>
+                            <p>Private Key:</p>
                             <textarea readonly name="message" rows="10" cols="30"><%= ecc_private_key %></textarea>
                             <input type="hidden" id="type" name="file_type" value="ecc_private_key">
                             <input type="submit" id="submit" class="clearfix btn" value="Download">
                         </form>
                     </div>
                     <div class="flex-box">
-                        <h3>Shared Secret Key</h3>
+                        <h3>ECC Shared Secret Key</h3>
                         <form id="ssk-gen-key-form" action="http://localhost:61666/generate-keys/shared-secret-key" method="post" enctype="multipart/form-data">
-                            <label for="id">Public Key Reciever</label>
+                            <label for="id">ECC Public Key Reciever:</label>
                             <input type="file" id="key" name="pbk_reciever">
                             <br>
-                            <label for="id">Private Key Sender</label>
+                            <br>
+                            <label for="id">ECC Private Key Sender:</label>
                             <input type="file" id="key" name="pvk_sender">
                             <input type="submit" id="submit" class="clearfix btn" value="Generate">
                         </form>
                         <br>
                         <form id="ssk-download-form" action="http://localhost:61666/downloads" method="post">
-                            <p>Key</p>
+                            <p>Shared Secret Key:</p>
                             <textarea readonly name="message" rows="10" cols="30"><%= ssk %></textarea>
                             <input type="hidden" id="type" name="file_type" value="shared-secret-key">
                             <input type="submit" id="submit" class="clearfix btn" value="Download">

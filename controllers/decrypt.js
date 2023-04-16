@@ -1,29 +1,37 @@
 const crypto = require('crypto');
+const { performance } = require('perf_hooks');
 const sym_key_alg = require('../helpers/sym_key_alg');
 
 function rsa_decrypt(data, pvk){
-    in_pvk = crypto.createPrivateKey({
+    const in_pvk = crypto.createPrivateKey({
         key: pvk
     });
 
+    const start = performance.now();
     const decryptedData = crypto.privateDecrypt(
         {
             key: in_pvk
         },
         Buffer.from(data, "base64")
     );
+    const end = performance.now();
+    const dec_time = end - start;
+    console.log("RSA Decryption Time: " + dec_time);
 
     return decryptedData.toString();
 }
 
 function ecc_decrypt(data, ssk){
-    iv = "albw+ooK8vJR8RviGSThXg==";
-    console.log(ssk.length);
+    const iv = "albw+ooK8vJR8RviGSThXg==";
     const { key, alg } = sym_key_alg(ssk);
-    decipher = crypto.createDecipheriv(alg, key, Buffer.from(iv, "base64"));
-    decryptedData = decipher.update(data, 'hex', 'utf8');
+
+    const start = performance.now();
+    let decipher = crypto.createDecipheriv(alg, key, Buffer.from(iv, "base64"));
+    let decryptedData = decipher.update(data, 'hex', 'utf8');
     decryptedData += decipher.final('utf8');
-    console.log(decryptedData);
+    const end = performance.now();
+    const dec_time = end - start;
+    console.log("ECC Decryption Time: " + dec_time);
 
     return decryptedData;
 }

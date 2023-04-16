@@ -3,13 +3,14 @@ const router = express.Router();
 const verification = require('../controllers/verify');
 
 router.post('/', (req, res) => {
-    pbk = req.body.pbk;
+    pbk = req.files.pbk.data.toString();
     data = req.body.data;
-    signature = req.body.signature;
+    signature = req.files.signature.data.toString();
 
     verify = verification(pbk, data, signature);
 
-    res.json({
+    res.render('../views/sign-ver', {
+        signature: null,
         verify: verify
     });
 });

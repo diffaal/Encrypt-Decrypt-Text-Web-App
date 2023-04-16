@@ -23,7 +23,10 @@ router.get('/enc-dec', function(req, res){
 });
 
 router.get('/sign-ver', function(req, res){
-    res.render('../views/sign-ver');
+    res.render('../views/sign-ver', {
+        signature: null,
+        verify: null
+    });
 });
 
 module.exports = router;

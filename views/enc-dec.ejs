@@ -22,23 +22,23 @@
                     <div class="flex-box">
                         <h2>ENCRYPT</h2>
                         <form id="enc-form" action="http://localhost:61666/encrypt" method="post" enctype="multipart/form-data">
-                            <label for="id">Algorithm</label>
+                            <label for="id">Algorithm:</label>
                             <select name="type" class="alg-enc">
                                 <option value="rsa">RSA</option>
                                 <option value="ecc">ECC</option>
                             </select>
                             <br>
                             <div class="input-key-enc">
-                                <label for="id">Public Key Sender</label>
+                                <label for="id">Public Key Reciever:</label>
                                 <input type="file" id="key" name="rsa_pbk">
                             </div>
-                            <p>Input<p>
+                            <p>Plaintext:<p>
                             <textarea name="data" rows="12" cols="60"></textarea>
                             <input type="submit" id="submit" class="clearfix btn" value="Encrypt">
                         </form>
                         <br>
                         <form id="cipher-download-form" action="http://localhost:61666/downloads" method="post">
-                            <p>Output</p>
+                            <p>Ciphertext:</p>
                             <textarea readonly name="message" rows="12" cols="60"><%= cipher %></textarea> 
                             <input type="hidden" id="type" name="file_type" value="ciphertext">
                             <input type="submit" id="submit" class="clearfix btn" value="Download"> 
@@ -47,23 +47,23 @@
                     <div class="flex-box">
                         <h2>DECRYPT</h2>
                         <form id="dec-form" action="http://localhost:61666/decrypt" method="post" enctype="multipart/form-data">
-                            <label for="id">Algorithm</label>
+                            <label for="id">Algorithm:</label>
                             <select name="type" class="alg-dec">
                                 <option value="rsa">RSA</option>
                                 <option value="ecc">ECC</option>
                             </select>
                             <br>
                             <div class="input-key-dec">
-                                <label for="id">Private Key Reciever</label>
+                                <label for="id">Private Key Reciever:</label>
                                 <input type="file" id="key" name="rsa_pvk">
                             </div>
-                            <p>Input<p>
+                            <p>Ciphertext:<p>
                             <textarea name="data" rows="12" cols="60"></textarea>
                             <input type="submit" id="submit" class="clearfix btn" value="Decrypt">
                         </form>
                         <br>
                         <form id="plain-download-form" action="http://localhost:61666/downloads" method="post">
-                            <p>Output</p>
+                            <p>Plaintext:</p>
                             <textarea readonly name="message" rows="12" cols="60"><%= plain %></textarea>
                             <input type="hidden" id="type" name="file_type" value="plaintext">
                             <input type="submit" id="submit" class="clearfix btn" value="Download"> 
