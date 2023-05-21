@@ -4,7 +4,7 @@ const { rsa_encrypt, ecc_encrypt } = require('../controllers/encrypt');
 const { write_file } = require('../helpers/file');
 
 router.post('/', (req, res) => {
-    alg_type = req.body.type;
+    alg_type = req.body.alg_type;
     data = req.body.data;
     render = {
         cipher: null,

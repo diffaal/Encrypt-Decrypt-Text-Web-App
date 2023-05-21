@@ -23,7 +23,7 @@
                         <h2>ENCRYPT</h2>
                         <form id="enc-form" action="http://localhost:61666/encrypt" method="post" enctype="multipart/form-data">
                             <label for="id">Algorithm:</label>
-                            <select name="type" class="alg-enc">
+                            <select name="alg_type" class="alg-enc">
                                 <option value="rsa">RSA</option>
                                 <option value="ecc">ECC</option>
                             </select>
@@ -48,7 +48,7 @@
                         <h2>DECRYPT</h2>
                         <form id="dec-form" action="http://localhost:61666/decrypt" method="post" enctype="multipart/form-data">
                             <label for="id">Algorithm:</label>
-                            <select name="type" class="alg-dec">
+                            <select name="alg_type" class="alg-dec">
                                 <option value="rsa">RSA</option>
                                 <option value="ecc">ECC</option>
                             </select>
