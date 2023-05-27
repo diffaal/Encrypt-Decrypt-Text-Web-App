@@ -9,7 +9,7 @@ router.post('/', (req, res) => {
 
     verify = verification(pbk, data, signature);
 
-    res.render('../views/sign-ver', {
+    res.render('../views/pages/sign-ver', {
         signature: null,
         verify: verify
     });

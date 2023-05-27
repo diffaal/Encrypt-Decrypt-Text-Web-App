@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
         plaintext_file_name = write_file("plaintext", plaintext);
         render.plain = plaintext;
     }
-    res.render('../views/enc-dec', render);
+    res.render('../views/pages/enc-dec', render);
 });
 
 module.exports = router;

@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
         pvk_file_name = write_file("ecc_private_key", pvk);
         render.ecc_private_key = pvk; 
     }
-    res.render('../views/gen-keys', render);
+    res.render('../views/pages/gen-keys', render);
 });
 
 router.post('/shared-secret-key', (req, res) => {
@@ -56,7 +56,7 @@ router.post('/shared-secret-key', (req, res) => {
     ssk_file_name = write_file("shared-secret-key", ssk);
     render.ssk = ssk;
 
-    res.render('../views/gen-keys', render);
+    res.render('../views/pages/gen-keys', render);
 });
 
 module.exports = router;

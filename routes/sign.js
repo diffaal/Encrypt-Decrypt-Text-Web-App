@@ -10,7 +10,7 @@ router.post('/', (req, res) => {
     signature = signing(pvk, data);
     signature_file_name = write_file("signature", signature);
 
-    res.render('../views/sign-ver', {
+    res.render('../views/pages/sign-ver', {
         signature: signature,
         verify: null
     });

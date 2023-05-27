@@ -1,24 +1,7 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Encrypt-Decrypt Text</title>
-        <link rel="stylesheet" href="../assets/style.css">
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li class="brand">Encrypt-Decrypt Text</li>
-                    <li class="nav-right"><a href="/sign-ver">SIGN/VERIFY</a></li>
-                    <li class="nav-right"><a href="/enc-dec">ENCRYPT/DECRYPT</a></li>
-                    <li class="nav-right"><a href="/gen-keys">GEN-KEYS</a></li>
-                    <li class="nav-right"><a href="/">HOME</a></li>
-                </ul>
-            </nav>
-        </header>
+<%- include('./partials/header'); %>
         <main>
-            <article id="smartphones">
-                <div class="flex-container fc-enc-dec">
+            <article>
+                <div class="flex-container">
                     <div class="flex-box">
                         <h2>ENCRYPT</h2>
                         <form id="enc-form" action="http://localhost:61666/encrypt" method="post" enctype="multipart/form-data">
@@ -33,13 +16,13 @@
                                 <input type="file" id="key" name="rsa_pbk">
                             </div>
                             <p>Plaintext:<p>
-                            <textarea name="data" rows="12" cols="60"></textarea>
+                            <textarea name="data" rows="10" cols="60"></textarea>
                             <input type="submit" id="submit" class="clearfix btn" value="Encrypt">
                         </form>
                         <br>
                         <form id="cipher-download-form" action="http://localhost:61666/downloads" method="post">
                             <p>Ciphertext:</p>
-                            <textarea readonly name="message" rows="12" cols="60"><%= cipher %></textarea> 
+                            <textarea readonly name="message" rows="10" cols="60"><%= cipher %></textarea> 
                             <input type="hidden" id="type" name="file_type" value="ciphertext">
                             <input type="submit" id="submit" class="clearfix btn" value="Download"> 
                         </form> 
@@ -58,13 +41,13 @@
                                 <input type="file" id="key" name="rsa_pvk">
                             </div>
                             <p>Ciphertext:<p>
-                            <textarea name="data" rows="12" cols="60"></textarea>
+                            <textarea name="data" rows="10" cols="60"></textarea>
                             <input type="submit" id="submit" class="clearfix btn" value="Decrypt">
                         </form>
                         <br>
                         <form id="plain-download-form" action="http://localhost:61666/downloads" method="post">
                             <p>Plaintext:</p>
-                            <textarea readonly name="message" rows="12" cols="60"><%= plain %></textarea>
+                            <textarea readonly name="message" rows="10" cols="60"><%= plain %></textarea>
                             <input type="hidden" id="type" name="file_type" value="plaintext">
                             <input type="submit" id="submit" class="clearfix btn" value="Download"> 
                         </form>
@@ -72,9 +55,4 @@
                 </div>
             </article>
         </main>
-        <footer>
-            <p>&copy; 2023 Muhammad Diffa Ananda Lukman</p>
-        </footer>
-        <script src="./assets/dom.js"></script>
-    </body>
-</html>
+<%- include('./partials/footer'); %>

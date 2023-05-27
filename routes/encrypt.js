@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
         ciphertext_file_name = write_file("ciphertext", ciphertext);
         render.cipher = ciphertext;
     }
-    res.render('../views/enc-dec', render);
+    res.render('../views/pages/enc-dec', render);
 });
 
 module.exports = router;

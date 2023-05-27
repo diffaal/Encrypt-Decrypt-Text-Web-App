@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Encrypt-Decrypt Text</title>
-        <link rel="stylesheet" href="../assets/style.css">
-    </head>
-    <body>
-        <header>
-            <nav>
-                <ul>
-                    <li class="brand">Encrypt-Decrypt Text</li>
-                    <li class="nav-right"><a href="/sign-ver">SIGN/VERIFY</a></li>
-                    <li class="nav-right"><a href="/enc-dec">ENCRYPT/DECRYPT</a></li>
-                    <li class="nav-right"><a href="/gen-keys">GEN-KEYS</a></li>
-                    <li class="nav-right"><a href="/">HOME</a></li>
-                </ul>
-            </nav>
-        </header>
+<%- include('./partials/header'); %>
         <main>
-            <article id="smartphones">
+            <article>
                 <h2>GENERATE KEYS</h2>
                 <div class="flex-container">
                     <div class="flex-box">
@@ -96,8 +79,4 @@
                 </div>
             </article>
         </main>
-        <footer>
-            <p>&copy; 2023 Muhammad Diffa Ananda Lukman</p>
-        </footer>
-    </body>
-</html>
+<%- include('./partials/footer'); %>
