@@ -69,7 +69,7 @@ footer{
     background-color: #333;
 }
 
-h2, h4{
+h2{
     text-align: center;
     color: #333;
 }
@@ -87,52 +87,4 @@ h2, h4{
     margin: 10px;
     padding: 10px;
     box-shadow:2px 2px 2px 2px rgba(50,50,50,0.5);
-}
-
-.flex-box img {
-    width: 100%;
-    object-fit: contain;
-    border-radius: 4px;
-}
-
-.flex-box h3{
-    text-align: center;
-    color: #333;
-}
-
-#about{
-    margin-top: 60px;
-    color: #333;
-}
-
-.card{
-    box-shadow:2px 2px 2px 2px rgba(50,50,50,0.5);
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.card img{
-    width: 200px;
-}
-
-.card header{
-    text-align: center;
-}
-
-table{
-    margin-left: auto;
-    margin-right: auto;
-}
-
-table td{
-    width: 70%;
-}
-
-.flex-detail{
-    margin-left: 10px;
-    color: white;
-}
-
-.flex-detail h3{
-    color: white;
 }
